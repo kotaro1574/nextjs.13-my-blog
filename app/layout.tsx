@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Header from './Header'
 
 export const metadata: Metadata = {
   title: 'Next.js13 Blog',
@@ -12,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="jp">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <footer>footer</footer>
+      </body>
     </html>
   )
 }
