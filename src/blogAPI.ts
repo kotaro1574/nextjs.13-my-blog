@@ -6,6 +6,10 @@ export const getAllArticles = async (): Promise<Article[]> => {
     { cache: 'no-store' }, // SSR
   )
 
+  if (!res.ok) {
+    throw new Error('エラー')
+  }
+
   const articles = await res.json()
   return articles
 }
