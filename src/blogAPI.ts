@@ -5,7 +5,8 @@ export const getAllArticles = async (): Promise<Article[]> => {
     `https://silver-waddle-pwx9pxgwgvg296j4-3001.app.github.dev/posts`,
     { cache: 'no-store' }, // SSR
   )
+  // console.log(res.json())
 
-  const articles = res.json()
-  return articles
+  const articles = await res.json()
+  return []
 }
