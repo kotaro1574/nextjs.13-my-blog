@@ -41,7 +41,9 @@ const ArticleList = ({ articles }: Props) => {
               href={`articles/${article.id}`}
               className={'text-slate-900 pb-6'}
             >
-              {article.content}
+              {article.content.length > 70
+                ? article.content.substring(0, 70) + '...'
+                : article.content}
             </Link>
             <Link
               href={`articles/${article.id}`}
