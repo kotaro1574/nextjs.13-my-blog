@@ -38,7 +38,7 @@ export const createArticle = async (
   title: string,
   content: string,
 ): Promise<Article> => {
-  const currentDatetime = new Date().toISOString
+  const currentDatetime = new Date().toISOString()
 
   const res = await fetch(`http://0.0.0.0:3001/posts`, {
     method: 'POST',
