@@ -1,6 +1,5 @@
-import Image from 'next/image'
-import ArticleList from './components/ArticleList'
 import { getAllArticles } from '@/blogAPI'
+import ArticleList from './components/ArticleList'
 
 export default async function Home() {
   const articles = await getAllArticles()
