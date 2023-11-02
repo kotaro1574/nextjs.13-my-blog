@@ -1,17 +1,37 @@
 'use client'
 
 import { createArticle } from '@/blogAPI'
+import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 
 const CreateArticlePage = () => {
+  const router = useRouter()
   const [id, setId] = useState('')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    await createArticle(id, title, content)
+    setLoading(true)
+    await fetch(
+      `https://silver-waddle-pwx9pxgwgvg296j4-3000.app.github.dev/api/create`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          title,
+          content,
+        }),
+      },
+    )
+
+    setLoading(false)
+    router.push('/')
   }
 
   return (
@@ -58,7 +78,12 @@ const CreateArticlePage = () => {
 
         <button
           type={'submit'}
-          className={'py-2 px-4 border rounded-md bg-orange-300'}
+          className={`py-2 px-4 border rounded-md ${
+            loading
+              ? 'bg-orange-300 cursor-not-allowed'
+              : 'bg-orange-400 hover:bg-orange-500'
+          } text-white font-semibold focus:outline-none`}
+          disabled={loading}
         >
           投稿
         </button>
