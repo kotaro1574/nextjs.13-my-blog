@@ -1,6 +1,5 @@
 'use client'
 
-import { createArticle } from '@/blogAPI'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 
