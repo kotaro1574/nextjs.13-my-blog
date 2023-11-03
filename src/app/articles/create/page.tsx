@@ -15,7 +15,7 @@ const CreateArticlePage = () => {
 
     setLoading(true)
     await fetch(
-      `https://silver-waddle-pwx9pxgwgvg296j4-3000.app.github.dev/api/create`,
+      `https://silver-waddle-pwx9pxgwgvg296j4-3000.app.github.dev/api/blog`,
       {
         method: 'POST',
         headers: {
