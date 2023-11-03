@@ -31,6 +31,7 @@ const CreateArticlePage = () => {
 
     setLoading(false)
     router.push('/')
+    router.refresh()
   }
 
   return (

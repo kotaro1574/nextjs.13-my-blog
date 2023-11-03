@@ -1,3 +1,4 @@
+import DeleteButton from '@/app/components/DeleteButton'
 import Image from 'next/image'
 
 const Article = async ({ params }: { params: { id: string } }) => {
@@ -21,6 +22,9 @@ const Article = async ({ params }: { params: { id: string } }) => {
       </h1>
       <div className="text-lg leading-relaxed text-justify">
         <p>{detailArticle.content}</p>
+      </div>
+      <div className="text-right mt-3">
+        <DeleteButton id={detailArticle.id} />
       </div>
     </div>
   )
