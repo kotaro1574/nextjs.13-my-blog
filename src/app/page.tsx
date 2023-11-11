@@ -1,7 +1,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import ArticleList from './components/ArticleList'
 import { cookies } from 'next/headers'
-import AuthButton from './components/AuthButton'
+import ArticleList from './components/ArticleList'
+import AuthButtonServer from './components/AuthButtonServer'
 
 export default async function Home() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL!
@@ -20,7 +20,7 @@ export default async function Home() {
 
       <aside className="w-full md:w-1/3 flex flex-col items-center px-3 md:pl-6">
         <div>
-          <AuthButton />
+          <AuthButtonServer />
         </div>
         {tweets?.map((tweet) => (
           <div
