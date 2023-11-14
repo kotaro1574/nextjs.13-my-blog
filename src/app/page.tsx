@@ -2,14 +2,23 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import ArticleList from './components/ArticleList'
 import AuthButtonServer from './components/AuthButtonServer'
+import { redirect } from 'next/navigation'
 
 export default async function Home() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL!
 
+  const supabase = createServerComponentClient({ cookies })
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (!session) {
+    redirect('/login')
+  }
+
   const res = await fetch(`${API_URL}/api/blog`, { cache: 'no-store' })
   const articles = await res.json()
 
-  const supabase = createServerComponentClient({ cookies })
   const { data: tweets } = await supabase.from('tweets').select()
 
   return (
